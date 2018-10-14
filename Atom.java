@@ -3,6 +3,7 @@ import java.awt.*;
 import javax.swing.JFrame;
 import java.awt.Color;
 
+//LEARN HASHMAPS
 
 public class Atom extends JFrame{
 
@@ -31,6 +32,7 @@ public class Atom extends JFrame{
     public int n1; //first electron level
     public int n2; //second electron level
     public int ionizationCounter; // counts number of times electron is ionized
+    public Color custom;
 
     public static final double chR = 13.6; //speed of light*plank's constant*rydberg constant in electron volts
 
@@ -81,7 +83,7 @@ public class Atom extends JFrame{
         return n2;
     }
 
-    public double getphotonEnergy(int n1, int n2){
+    public double getPhotonEnergy(int n1, int n2){
 
         if (n1<n2){
             System.out.println("electron is excited to more energetic state. Photon is absorbed");
@@ -127,30 +129,6 @@ public class Atom extends JFrame{
         return iE;
     }
 
-//    public Atom(){
-//        setTitle("Color of photon");
-//        setSize(400,200);
-//        setVisible(true);
-//        setDefaultCloseOperation(EXIT_ON_CLOSE);
-//    }
-
-//
-//    public void paint (Graphics G)
-//    {
-//        // paint color between 380 and 720 nm TODO indicate if ultraviolet or ir or what other wavelength if it's note visible light
-//        wl2rgb(waveLength);
-//        Color custom = new Color(r,g,b);
-//        G.setColor(custom);
-//        G.fillRect(0,0,400,200);
-//
-//    }
-
-    public double getWavelength(double wave) {
-        waveLength = wave;
-        System.out.println(wave);
-        return waveLength;
-    }
-
 
     public void wl2rgb(double wavelength) {
         if (wavelength >= 380 && wavelength <= 440) {
@@ -194,68 +172,20 @@ public class Atom extends JFrame{
 
     }
 
+
     public Atom(){
-        setTitle("Color of photon");
+        setTitle("Wavelength Color");
         setSize(400,200);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-//
-//    public Atom(){
-//        setTitle("Color of photon");
-//        setSize(400,200);
-//        setVisible(true);
-//        setDefaultCloseOperation(EXIT_ON_CLOSE);
-//    }
-//
-//
-    public void paint (Graphics G)
-    {
-        // paint color between 380 and 720 nm TODO indicate if ultraviolet or ir or what other wavelength if it's note visible light
-        Color custom = new Color(r,g,b);
+
+
+    public void paint (Graphics G) {
+        custom = new Color(r, g, b);
         G.setColor(custom);
-        G.fillRect(0,0,400,200);
-
+        G.fillRect(0, 0, 400, 200);
     }
-
-
-//    public void wl2rgb(double wavelength) {
-//        if (wavelength >= 380 && wavelength <= 440) {
-//            r = 120;
-//            g = 0;
-//            b = 233;
-//            System.out.println("PART A: " + r + g + b);
-//        } else if (wavelength >= 441 && wavelength <= 490) {
-//            r = 0;
-//            g = 156;
-//            b = 255;
-//            System.out.println("PART B: " + r + g + b);
-//
-//        } else if (wavelength >= 491 && wavelength <= 510) {
-//            r = 0;
-//            g = 255;
-//            b = 149;
-//            System.out.println("PART C: " + r + g + b);
-//
-//        } else if (wavelength >= 511 && wavelength <= 580) {
-//            r = (int) (wavelength - 510) / (580 - 510);
-//            g = 176;
-//            b = 255;
-//            System.out.println("PART D: " + r + g + b);
-//
-//        } else if (wavelength >= 581 && wavelength <= 645) {
-//            r = 255;
-//            g = 152;
-//            b = 0;
-//            System.out.println("PART E: " + r + " " + g + " " + b);
-//
-//        } else if (wavelength >= 646 && wavelength <= 780) {
-//            r = 235;
-//            g = 0;
-//            b = 0;
-//            System.out.println("PART F: " + r + g + b);
-//
-//        }
 
 
 
@@ -266,17 +196,14 @@ public class Atom extends JFrame{
         test.getAtomicNum();
         test.getNumElectrons();
         test.getEnergyLevels();
-        double photonEnergy = test.getphotonEnergy(test.getN1(),test.getN2());
+        double photonEnergy = test.getPhotonEnergy(test.getN1(),test.getN2());
         System.out.println(photonEnergy);
 
-        double frequency = test.getFrequency(photonEnergy);
+        test.getFrequency(photonEnergy);
         double wavelength = test.getWavelength();
-        double ionizationEnergy = test.getIonizationE();
+        test.getIonizationE();
         test.wl2rgb(wavelength);
 
-//        Atom h = new Atom();
-//        h.wl2rgb(h.getWavelength());
-//        h.paint(h.getGraphics());
 
 
     }
