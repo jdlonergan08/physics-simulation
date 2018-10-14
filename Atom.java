@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Atom {
 
     /*
-    TODO figure out ionization energy
+    
     TODO limit number of energy levels that use can input
     TODO calculate ionization energy
 
