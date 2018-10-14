@@ -2,11 +2,26 @@ import java.util.Scanner;
 
 public class Atom {
 
+    /*
+    TODO figure out ionization energy
+    TODO limit number of energy levels that use can input
+    TODO calculate ionization energy
+
+    TODO create equations for calculating color of photon
+    TODO make GUI
+
+    TODO make atom a super class
+    TODO apply program to more than hydrogen
+    TODO update GUI
+    TODO connect to website
+     */
+
     public int atomicNum;
     public int numElectrons; // can calculate num electrons from atomicNum, but it may be necessary to define this differently later on
     public double photonEnergy; // measured in electron volts (eV)
     public double waveLength; //in nanometers
     public double frequency; // in inverse seconds
+    public double ionizationE; //ionization energy
     public int energyLevels; // will be 4 for H atoms
     public int n1; //first electron level
     public int n2; //second electron level
@@ -70,8 +85,8 @@ public class Atom {
     }
 
 
-    public double getFrequency(double photonEnergy){
-        double photonEnergyJ = convertEVtoJoules(photonEnergy);
+    public double getFrequency(double input){
+        double photonEnergyJ = Math.abs(convertEVtoJoules(photonEnergy));
         frequency = photonEnergyJ/h; // in inverse seconds
         System.out.println(frequency + " inverse seconds");
         return frequency;
@@ -82,6 +97,15 @@ public class Atom {
         waveLength *= Math.pow(10,9);// in nanometers
         System.out.println(waveLength + " nanometers");
         return waveLength;
+    }
+
+    public double getIonizationE(){  //ionization energy is just taking electron to an energy level of 0 so it's just negative of energy level
+        Scanner kb = new Scanner(System.in);
+        System.out.println("input energy level electron is in: ");
+        int n = kb.nextInt();
+        double iE = chR*(1 / (double)n*n);
+        System.out.println(iE + "eV\n" + "In joules: " + convertEVtoJoules(iE));
+        return iE;
     }
 
 
@@ -96,6 +120,7 @@ public class Atom {
 
         double frequency = test.getFrequency(photonEnergy);
         double wavelength = test.getWavelength();
+        double ionizationEnergy = test.getIonizationE();
     }
 
 
