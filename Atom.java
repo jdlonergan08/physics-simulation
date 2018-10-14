@@ -3,9 +3,6 @@ import java.util.Scanner;
 public class Atom {
 
     /*
-    
-    TODO limit number of energy levels that use can input
-    TODO calculate ionization energy
 
     TODO create equations for calculating color of photon
     TODO make GUI
@@ -48,10 +45,20 @@ public class Atom {
         energyLevels = kb.nextInt();
     }
 
+    public void isInEnergyBounds(int energyLevels, int n){
+
+        if (n<=energyLevels) {
+        }
+        else{
+            System.out.println("error: energy level exists outside atom");
+        }
+    }
+
     public int getN1(){
         Scanner kb = new Scanner(System.in);
         System.out.println("input initial energy level: ");
         n1 = kb.nextInt();
+        isInEnergyBounds(energyLevels,n1);
         return n1;
     }
 
@@ -59,6 +66,7 @@ public class Atom {
         Scanner kb = new Scanner(System.in);
         System.out.println("input final energy level: ");
         n2 = kb.nextInt();
+        isInEnergyBounds(energyLevels,n2);
         return n2;
     }
 
@@ -103,7 +111,7 @@ public class Atom {
         Scanner kb = new Scanner(System.in);
         System.out.println("input energy level electron is in: ");
         int n = kb.nextInt();
-        double iE = chR*(1 / (double)n*n);
+        double iE = chR*(1 / ((double)n*n));
         System.out.println(iE + "eV\n" + "In joules: " + convertEVtoJoules(iE));
         return iE;
     }
